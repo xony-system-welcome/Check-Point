@@ -7,6 +7,10 @@ Check point tool:
 3. Download R80.4 (https://supportcenter.checkpoint.com/supportcenter/portal?action=portlets.DCFileAction&eventSubmit_doGetdcdetails=&fileid=101083)
 4. Download R81 (https://supportcenter.checkpoint.com/supportcenter/portal?action=portlets.DCFileAction&eventSubmit_doGetdcdetails=&fileid=109064)
 
-Check point gateway:
-1. 
-2. 
+Check point gateway R80.4 to R81:
+
+R80.4 set up
+1. cpconfig
+2. fw unloadlocal
+3. run the cp_command.sh to display Check Point information
+4. 
