@@ -1,0 +1,19 @@
+---
+- name: playbook name
+  hosts: check_point
+  connection: httpapi
+  tasks:
+
+    #Get administrator objects facts on Checkpoint over Web Services API
+    - name: show-data-center-objects
+      cp_mgmt_data_center_object_facts:
+      register: result
+        
+    # - name: debug
+    #   debug: 
+    #     msg: "{{ result }} "
+
+    - name: output results
+      copy:
+        content: "{{ result | to_nice_json }}"
+        dest: "sample_result/show-data-center-objects_{{ inventory_hostname | replace('.','_') }}.json" 

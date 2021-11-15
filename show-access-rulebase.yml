@@ -1,0 +1,21 @@
+---
+- name: playbook name
+  hosts: check_point
+  connection: httpapi
+  tasks:
+
+    #Get access-role objects facts on Check Point over Web Services API
+    - name: show-access-rulebase
+      cp_mgmt_access_rule_facts:
+        limit: 9999
+        name: Network
+      register: result
+        
+    # - name: debug
+    #   debug: 
+    #     msg: "{{ result }} "
+
+    - name: output results
+      copy:
+        content: "{{ result| to_nice_json }}"
+        dest: "sample_result/show_access_rulebase_{{ inventory_hostname | replace('.','_') }}.json" 

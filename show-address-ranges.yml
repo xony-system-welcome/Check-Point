@@ -1,0 +1,22 @@
+---
+- name: playbook name
+  hosts: check_point
+  connection: httpapi
+  tasks:
+
+    #Get address-range objects facts on Check Point over Web Services API
+    - name: show-address-ranges
+      cp_mgmt_address_range_facts:
+        details_level: standard
+        limit: 50
+        offset: 0
+      register: result_4
+        
+    # - name: debug
+    #   debug: 
+    #     msg: "{{ result_4 }} "
+    
+    - name: output results
+      copy:
+        content: "{{ result_4 | to_nice_json }}"
+        dest: "sample_result/show-address-ranges_{{ inventory_hostname | replace('.','_') }}.json" 

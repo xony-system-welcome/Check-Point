@@ -1,0 +1,14 @@
+---
+- name: playbook name
+  hosts: check_point
+  connection: httpapi
+  tasks:
+
+    - name: Get object facts
+      checkpoint_object_facts:
+      register: result
+
+    - name: output facts
+      copy:
+        content: "{{ result | to_nice_json }}"
+        dest: "sample_result/show_objects_{{ inventory_hostname | replace('.','_') }}.json" 

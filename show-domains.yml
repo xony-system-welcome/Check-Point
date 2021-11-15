@@ -1,0 +1,22 @@
+---
+- name: playbook name
+  hosts: check_point
+  connection: httpapi
+  tasks:
+
+    #Get administrator objects facts on Checkpoint over Web Services API
+    - name: show-domains
+      cp_mgmt_domain_facts:
+        details_level: standard
+        limit: 50
+        offset: 0
+      register: result
+        
+    # - name: debug
+    #   debug: 
+    #     msg: "{{ result }} "
+
+    - name: output results
+      copy:
+        content: "{{ result | to_nice_json }}"
+        dest: "sample_result/show-domains_{{ inventory_hostname | replace('.','_') }}.json" 

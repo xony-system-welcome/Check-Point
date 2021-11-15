@@ -1,0 +1,22 @@
+---
+- name: playbook name
+  hosts: check_point
+  connection: httpapi
+  tasks:
+
+    #Get access-layer objects facts on Check Point over Web Services API
+    - name: show-access-layers
+      cp_mgmt_access_layer_facts:
+        details_level: standard
+        limit: 50
+        offset: 0
+      register: result
+        
+    # - name: debug
+    #   debug: 
+    #     msg: "{{ result }} " 
+
+    - name: output results
+      copy:
+        content: "{{ result | to_nice_json }}"
+        dest: "sample_result/show_access_layers_{{ inventory_hostname | replace('.','_') }}.json" 
