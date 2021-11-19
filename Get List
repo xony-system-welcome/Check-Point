@@ -1,0 +1,141 @@
+For GATEWAYS & SERVERS
+# show all SMC gateways-and-servers 
+    >show gateways-and-servers limit 500 offset 0 details-level "standard"
+# show all SMC host
+    >show checkpoint-hosts
+# show the SMC detail
+    >show checkpoint-host name ""
+# shwo all Cluster
+    >show simple-clusters
+# show the cluster detail
+    >show simple-cluster name ""
+# show all Gateways
+    >show simple-gateways
+# show the gateway detail
+    >show simple-gateway name ""
+
+
+
+
+For Objects
+Object Categories
+    -Network Object
+        -Gateways and Servers
+
+        -Network
+            >show networks limit 500 offset 0 details-level "standard"
+        -Hosts
+        -Groups
+        -Address Ranges
+        -Dynamic Objects
+        -Security Zones
+        -Domains
+    -Services
+        -TCP
+            >show services-tcp limit 500 offset 0 details-level "standard"
+        -UDP
+            >show services-udp limit 500 offset 0 details-level "standard"
+        -RPC
+            >show services-rpc limit 500 offset 0 details-level "standard"
+        -DCE-ROC
+            >show services-dce-rpc limit 500 offset 0 details-level "standard"
+        -ICMP Servers
+            >show services-icmp limit 500 offset 0 details-level "standard"
+            >show services-icmp6 limit 500 offset 0 details-level "standard"
+########-GTP
+            >##############################
+        -Compound TCP
+            >show services-compound-tcp limit 500 offset 0 details-level "standard"
+        -Citrix TCP
+            >show services-citrix-tcp limit 500 offset 0 details-level "standard"
+        -Other Services
+            >show services-other limit 500 offset 0 details-level "standard"
+########-Services Groups
+            >###############################
+    -Applications/Categories
+########-Applications
+            >###############################
+        -Categories
+            >show application-site-categories limit 500 offset 0 details-level "standard"
+    -VPN Communities
+        -Mylntranet
+            >show vpn-communities-meshed limit 500 offset 0 details-level "standard"
+        -RemoteAccess
+            >show vpn-communities-remote-access limit 500 offset 0 details-level "standard"
+    -Data Types
+        -File Attributes
+        -Keywords
+        -Weighted Keywords
+        -Patterns (RegEx)
+        -Compound Data Type Group
+        -Traditional Data Type Group
+    -Users
+        -User Templates
+    -Servers
+        -Trusted CA
+    -Time Objects
+        -Time
+    -UserCheck Interactions
+        -Ask UserCheck
+        -Canel UserCheck
+        -Inform UserCheck
+        -Drop UserCheck
+    -Limit
+        -Download_10Mbps
+        -Download_1Gbps
+        -Upload_10Mbps
+        -Upload_1Gbps
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Get Gateways & Servers
+Get Logs
+Get Object
+Get Access Control Policy
+Get Access Control NAT
+Get Threat Prvevention Policy
+Get Threat Prvevention Exceptions
+Get HTTPS Inspection
+Get Shared Policies > Geo Policy > Gateways
+Get Recent Policies
+Get Administrators 
+Get Permission Profiles
+
+Get Gateways
+#DONE
+    >show simple-gateways limit 50 offset 0 details-level "standard"
+
+Get Clusters
+#NEED Create.
+    >show simple-clusters limit 50 offset 0 details-level "standard"
+
+Get Checkpoint Hosts
+#NEED Create.
+    >show checkpoint-hosts limit 500 offset 0 details-level "standard"
+
+Get Checkpoint time-groups
+#NEED Create.
+    >show time-groups limit 500 offset 0 details-level "standard"
+
+Get Checkpoint tags
+#NEED Create.
+    >show tags limit 500 offset 0 details-level "standard"
+
+Get Policy Settings
+#NEED Create.
+    >show policy-setttings

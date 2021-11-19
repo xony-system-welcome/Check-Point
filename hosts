@@ -1,0 +1,11 @@
+[check_point]
+10.194.46.17
+
+[check_point:vars]
+ansible_httpapi_use_ssl=True
+ansible_httpapi_validate_certs=False
+#ansible_user=redhat
+#ansible_password=Redh@t1234
+ansible_user=redhatadmin
+ansible_password=P@ssw0rd
+ansible_network_os=checkpoint

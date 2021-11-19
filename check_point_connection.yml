@@ -1,0 +1,58 @@
+---
+- name: check_point
+  hosts: localhost
+  connection: local
+  gather_facts: no
+
+  vars: 
+    checkpoint_ip: 10.194.46.17
+    checkpoint_user: redhatadmin
+    checkpoint_password: P@ssw0rd
+  
+  tasks:
+    - name: login
+      uri: 
+        url: https://{{ checkpoint_ip }}/web_api/login
+        method: POST
+        validate_certs: no
+        body_format: json
+        body:
+          user: "{{ checkpoint_user }}"
+          password: "{{ checkpoint_password }}"
+      register: login_out
+
+    - name: debug
+      debug: 
+        var: login_out
+
+    - name: save session id
+      set_fact:
+        sid: "{{ login_out.json.sid }}"
+
+    - name: debug
+      debug: 
+        var: sid
+
+    - name: show-simple-cluster
+      uri: 
+        url: https://{{ checkpoint_ip }}/web_api/show-simple-clusters
+        method: POST
+        validate_certs: no
+        headers: 
+          X-chkp-sid: "{{ sid }}"
+          Content-Type: application/json
+        body_format: json
+        body:          
+          details-level: standard
+      register: result_out    
+      
+#    - name: debug
+#      debug: 
+#        var: result_out
+
+    - name: output results
+      copy:
+        content: "{{ result_out| to_nice_json }}"
+        dest: "show_folder/sample_result/show_simple_cluster_{{ inventory_hostname | replace('.','_') }}.json" 
+
+    
